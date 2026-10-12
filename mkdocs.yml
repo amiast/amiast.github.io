@@ -1,0 +1,72 @@
+site_name: Hockey Pages
+site_url: https://amiast.github.io
+
+nav:
+  - Home: index.md
+  - Editorials: editorials.md
+  - Miscellaneous:
+    - Overview: misc/index.md
+    - Convex Optimization: misc/convex_optimization.md
+    - Discrete Logarithm: misc/discrete_log.md
+
+theme:
+  name: material
+
+  icon:
+    logo: material/music
+
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+      primary: purple
+      accent: deep purple
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+      primary: purple
+      accent: deep purple
+
+  font:
+    text: Noto Music
+    code: Noto Sans Mono
+
+  features:
+    - toc.follow
+    - toc.integrate
+    - navigation.top
+    - navigation.tabs
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+
+copyright: Maintained by <a href="https://github.com/amiast"><u>amiast</u></a>.
+
+plugins:
+  - search
+
+extra_css:
+  - stylesheets/format.css
+
+extra_javascript:
+  - javascripts/open_external_links.js
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - md_in_html
