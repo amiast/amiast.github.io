@@ -1,3 +1,7 @@
+html {
+    scrollbar-gutter: stable;
+}
+
 ::selection {
     background-color: var(--md-primary-fg-color);
     color: white;

@@ -6,14 +6,14 @@ nav:
   - Editorials: editorials.md
   - Miscellaneous:
     - Overview: misc/index.md
-    - Convex Optimization: misc/convex_optimization.md
-    - Discrete Logarithm: misc/discrete_log.md
+    - Convex optimization: misc/convex_optimization.md
+    - Discrete logarithm: misc/discrete_log.md
 
 theme:
   name: material
 
   icon:
-    logo: material/music
+    logo: material/music-clef-treble
 
   palette:
     - media: "(prefers-color-scheme: light)"
@@ -50,6 +50,11 @@ copyright: Maintained by <a href="https://github.com/amiast"><u>amiast</u></a>.
 
 plugins:
   - search
+  - social:
+      cards_layout_dir: layouts
+      cards_layout: custom
+      cards_layout_options:
+        font_family: Noto Sans Mono
 
 extra_css:
   - stylesheets/format.css

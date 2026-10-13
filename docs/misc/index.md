@@ -1,3 +1,9 @@
+---
+title: Overview - Miscellaneous
+---
+
+# Overview - Miscellaneous
+
 *Miscellaneous* is a collection of code snippets, notes, and other files I have created together with the [kotone library](https://github.com/amiast/cpp-utility).
 
 Originally, the kotone library would only host C++ headers. I designed these headers to be self-contained and well-documented so I could use them easily during contests.
