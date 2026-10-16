@@ -1,0 +1,50 @@
+html {
+    scrollbar-gutter: stable;
+}
+
+::selection {
+    background-color: var(--md-primary-fg-color);
+    color: white;
+}
+
+.md-ellipsis {
+    position: relative;
+    top: -2px;
+}
+
+.md-search__input {
+    position: relative;
+    top: -2px;
+}
+
+.md-tabs__item {
+    height: 2rem;
+}
+
+.md-tabs__link {
+    display: flex;
+    align-items: center;
+    height: 90%;
+    margin-top: 0;
+    padding: 0 0.8em;
+}
+
+.md-nav__link {
+    line-height: 1.5;
+}
+
+.md-content {
+    padding-bottom: 2rem;
+}
+
+.md-typeset p {
+    line-height: 2.1;
+}
+
+.md-typeset table:not([class]) {
+    font-size: inherit;
+}
+
+.md-typeset pre code {
+    letter-spacing: 0.05em;
+}

@@ -1,0 +1,1044 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://amiast.github.io/misc/convex_optimization/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../discrete_log/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Convex optimization - Hockey Pages</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Music:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Music";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/format.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Convex optimization - Hockey Pages" />
+<meta property="og:image" content="https://amiast.github.io/assets/images/social/misc/convex_optimization.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://amiast.github.io/misc/convex_optimization/" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Convex optimization - Hockey Pages" />
+<meta property="twitter:image" content="https://amiast.github.io/assets/images/social/misc/convex_optimization.png" />
+</head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#convex-optimization" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Hockey Pages" class="md-header__button md-logo" aria-label="Hockey Pages" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 11V7.5l2.2-2.21c.8-.79.95-2.05.39-3.03A2.47 2.47 0 0 0 13.45 1c-.21 0-.45.03-.64.09C11.73 1.38 11 2.38 11 3.5v3.24L7.86 9.91a5.95 5.95 0 0 0-1.25 6.43c.77 1.9 2.45 3.21 4.39 3.55v.61c0 .26-.23.5-.5.5H9v2h1.5c1.35 0 2.5-1.11 2.5-2.5V20c2.03 0 4.16-1.92 4.16-4.75 0-2.3-1.92-4.25-4.16-4.25m0-7.5c0-.23.11-.41.32-.47.22-.06.45.03.56.23a.5.5 0 0 1-.08.61l-.8.86zm-2 8c-.97.64-1.7 1.74-1.96 2.76l1.96.52v3.05a3.86 3.86 0 0 1-2.57-2.26c-.59-1.46-.27-3.12.83-4.24L11 9.5zm2 6.5v-5.06c1.17 0 2.18 1.1 2.18 2.31C15.18 17 13.91 18 13 18"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hockey Pages
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Convex optimization
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="purple" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="purple" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../editorials/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Editorials
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Miscellaneous
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hockey Pages" class="md-nav__button md-logo" aria-label="Hockey Pages" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 11V7.5l2.2-2.21c.8-.79.95-2.05.39-3.03A2.47 2.47 0 0 0 13.45 1c-.21 0-.45.03-.64.09C11.73 1.38 11 2.38 11 3.5v3.24L7.86 9.91a5.95 5.95 0 0 0-1.25 6.43c.77 1.9 2.45 3.21 4.39 3.55v.61c0 .26-.23.5-.5.5H9v2h1.5c1.35 0 2.5-1.11 2.5-2.5V20c2.03 0 4.16-1.92 4.16-4.75 0-2.3-1.92-4.25-4.16-4.25m0-7.5c0-.23.11-.41.32-.47.22-.06.45.03.56.23a.5.5 0 0 1-.08.61l-.8.86zm-2 8c-.97.64-1.7 1.74-1.96 2.76l1.96.52v3.05a3.86 3.86 0 0 1-2.57-2.26c-.59-1.46-.27-3.12.83-4.24L11 9.5zm2 6.5v-5.06c1.17 0 2.18 1.1 2.18 2.31C15.18 17 13.91 18 13 18"/></svg>
+
+    </a>
+    Hockey Pages
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../editorials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editorials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Miscellaneous
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Miscellaneous
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Convex optimization
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Convex optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#submodular-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Submodular function
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Submodular function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monge-property" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monge property
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aliens-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aliens method
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aliens method">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#related-articles-and-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related articles and problems
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matroid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Matroid
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Matroid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matroid-intersection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Matroid intersection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linear-matroid-intersection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linear matroid intersection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linear matroid intersection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#related-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related problems
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#greedy-algorithm-for-matroids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Greedy algorithm for matroids
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Greedy algorithm for matroids">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#related-problems_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related problems
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aliens-method-for-matroids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aliens method for matroids
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#halls-marriage-theorem-and-transversal-matroids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hall's marriage theorem and transversal matroids
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hall&#39;s marriage theorem and transversal matroids">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#related-problems_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related problems
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../discrete_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discrete logarithm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="convex-optimization">Convex optimization</h1>
+<p><em>This article is adapted from the <a href="https://github.com/amiast/cpp-utility">kotone library</a>. You can find the original article <a href="https://github.com/amiast/cpp-utility/blob/main/kotone/misc/convex_optimization.md">here</a>.</em></p>
+<p>This article introduces topics related to convex optimization for discrete problems.</p>
+<h2 id="submodular-function">Submodular function</h2>
+<p>A submodular function is a function <span class="arithmatex">\(f:\mathcal{P}(\Omega)\rightarrow\mathbb{R}\)</span>, where <span class="arithmatex">\(\Omega\)</span> is a finite set and <span class="arithmatex">\(\mathcal{P}(\Omega)\)</span> is its powerset, that satisfies any of the following equivalent conditions:</p>
+<ul>
+<li>For <span class="arithmatex">\(X\subseteq Y\subseteq\Omega\)</span> and <span class="arithmatex">\(x\in \Omega\setminus Y\)</span>,</li>
+</ul>
+<div class="arithmatex">\[f(X\cup\lbrace x\rbrace)-f(X)\geq f(Y\cup\lbrace x\rbrace)-f(Y).\]</div>
+<ul>
+<li>For <span class="arithmatex">\(S, T\subseteq\Omega\)</span>,</li>
+</ul>
+<div class="arithmatex">\[f(S)+f(T)\geq f(S\cup T)+f(S\cap T).\]</div>
+<ul>
+<li>For <span class="arithmatex">\(X\subseteq\Omega\)</span> and distinct <span class="arithmatex">\(x_1,x_2\in\Omega\setminus X\)</span>,</li>
+</ul>
+<div class="arithmatex">\[f(X\cup\lbrace x_1\rbrace)+f(X\cup\lbrace x_2\rbrace)\geq f(X\cup\lbrace x_1,x_2\rbrace)+f(X).\]</div>
+<p>The property also describes <strong>diminishing returns</strong> between increasing input and decreasing marginal output.</p>
+<p>Some notable submodular functions include:</p>
+<ul>
+<li>monotone submodular functions: <span class="arithmatex">\(f(X)\leq f(Y)\)</span> for <span class="arithmatex">\(X\subseteq Y\subseteq\Omega\)</span>.</li>
+<li>symmetric submodular functions: <span class="arithmatex">\(f(S)=f(\Omega\setminus S)\)</span> for <span class="arithmatex">\(S\subseteq\Omega\)</span>.</li>
+</ul>
+<h3 id="properties">Properties</h3>
+<ul>
+<li>Non-negative linear combinations of submodular functions are also submodular.</li>
+<li>If <span class="arithmatex">\(f\)</span> is submodular, then <span class="arithmatex">\(g(S)=f(\Omega\setminus S)\)</span> is also submodular.</li>
+<li>If <span class="arithmatex">\(f\)</span> is monotone submodular and <span class="arithmatex">\(h\)</span> is non-decreasing and concave, then <span class="arithmatex">\(g(S)=h(f(S))\)</span> is submodular.</li>
+</ul>
+<h2 id="monge-property">Monge property</h2>
+<p>For integer intervals <span class="arithmatex">\([\ell, r)\)</span>, let <span class="arithmatex">\(c(\ell, r)\)</span> be a cost function for which <span class="arithmatex">\(-c(\ell, r)\)</span> is submodular. Define a directed graph of <span class="arithmatex">\(N+1\)</span> vertices, labeled <span class="arithmatex">\(0, \dots, N\)</span>, where a directed edge from <span class="arithmatex">\(u\)</span> to <span class="arithmatex">\(v\)</span> has cost <span class="arithmatex">\(c(u, v)\)</span> for all <span class="arithmatex">\(u\lt v\)</span>. We aim to find the minimum cost of a <span class="arithmatex">\(k\)</span>-edge path from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(N\)</span>.</p>
+<p>Since the negation of <span class="arithmatex">\(c\)</span> is submodular, for all <span class="arithmatex">\(0\leq x\lt y\lt z\lt w\leq N\)</span>,</p>
+<div class="arithmatex">\[c(x, w)+c(y, z)\geq c(x, z)+c(y, w).\]</div>
+<p>Since the above property also appears in Monge matrices, we extend the concept and refer to this property as the Monge property. In particular, the lower-triangular matrix <span class="arithmatex">\(M\)</span> defined by <span class="arithmatex">\(M_{ij}=c(j, i)\)</span> is a Monge matrix.</p>
+<p>Let <span class="arithmatex">\(d(k)\)</span> be the minimum cost of a <span class="arithmatex">\(k\)</span>-edge path from vertex <span class="arithmatex">\(0\)</span> to vertex <span class="arithmatex">\(N\)</span>. It can be shown that <span class="arithmatex">\(d\)</span> is convex. That is, for <span class="arithmatex">\(2\leq n\leq N\)</span>,</p>
+<div class="arithmatex">\[d(n)-d(n-1)\geq d(n-1)-d(n-2).\]</div>
+<p>Since <span class="arithmatex">\(d\)</span> is convex, <span class="arithmatex">\(d(k)\)</span> can be computed via the Aliens method.</p>
+<h2 id="aliens-method">Aliens method</h2>
+<blockquote>
+<p>There are <span class="arithmatex">\(N\)</span> distinguishable balls. Your goal is to choose <span class="arithmatex">\(K\)</span> balls under certain constraints to maximize a concave function <span class="arithmatex">\(f\)</span>. Find <span class="arithmatex">\(f(K)\)</span>.</p>
+</blockquote>
+<p>The above problem may be solved using DP in <span class="arithmatex">\(O(T(N)K)\)</span> time where <span class="arithmatex">\(T(N)\)</span> is the computational cost of an iteration. A different approach is to consider the following modification:</p>
+<blockquote>
+<p>There are <span class="arithmatex">\(N\)</span> balls. You may choose <strong>any number of balls</strong>. When you choose <span class="arithmatex">\(k\)</span> balls, your score is <span class="arithmatex">\(f(k)-pk\)</span> for a specified constant <span class="arithmatex">\(p\)</span>. Find the <strong>maximum</strong> <span class="arithmatex">\(k\)</span> that maximizes <span class="arithmatex">\(f(k)-pk\)</span>.</p>
+</blockquote>
+<p>Since <span class="arithmatex">\(f\)</span> is concave, there exists <span class="arithmatex">\(p\)</span> for which <span class="arithmatex">\(k=K\)</span> maximizes <span class="arithmatex">\(f(k)-pk\)</span>. Geometrically, <span class="arithmatex">\(p\)</span> is the slope of a supporting line intersecting <span class="arithmatex">\(f\)</span> at <span class="arithmatex">\(K\)</span>. Furthermore, the maximum <span class="arithmatex">\(k\)</span> that maximizes <span class="arithmatex">\(f(k)-pk\)</span> is non-increasing as a function of <span class="arithmatex">\(p\)</span>.</p>
+<p>If the codomain of <span class="arithmatex">\(f\)</span> is the set of integers, then all marginal values <span class="arithmatex">\(f(k)-f(k-1)\)</span> are integers, hence an integer <span class="arithmatex">\(p\)</span> can be chosen for which <span class="arithmatex">\(k=K\)</span> maximizes <span class="arithmatex">\(f(k)-pk\)</span>. In this case, <span class="arithmatex">\(p\)</span> can be computed via binary search in <span class="arithmatex">\(\mathcal{O}(T(N)\log(\max p-\min p))\)</span> time to recover <span class="arithmatex">\(f(K)=(f(K)-pK)+pK\)</span>. Here, <span class="arithmatex">\(\max p\)</span> and <span class="arithmatex">\(\min p\)</span> are the maximum and minimum values of <span class="arithmatex">\(f(k)-f(k-1)\)</span>, respectively.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">maximize</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">min_p</span><span class="p">,</span> <span class="n">max_p</span><span class="p">):</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="n">p</span><span class="p">):</span> <span class="o">...</span> <span class="c1"># Returns (f(k)-p*k, k) where k is the maximum value maximizing f(k)-p*k.</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">low</span> <span class="o">=</span> <span class="n">min_p</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">high</span> <span class="o">=</span> <span class="n">max_p</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="k">while</span> <span class="n">low</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">high</span><span class="p">:</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">low</span> <span class="o">+</span> <span class="n">high</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="k">if</span> <span class="n">solve</span><span class="p">(</span><span class="n">mid</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">K</span><span class="p">:</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="k">return</span> <span class="n">solve</span><span class="p">(</span><span class="n">low</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">low</span> <span class="o">*</span> <span class="n">K</span>
+</span></code></pre></div>
+<p>This method is known as the Aliens trick, named after IOI 2016 - Aliens, among a handful of other names.</p>
+<p>Note that the value of <span class="arithmatex">\(k\)</span> maximizing <span class="arithmatex">\(f(k)-pk\)</span> may not be unique. The above formulation chooses the maximum such <span class="arithmatex">\(k\)</span> for binary search. It is also possible to use other consistent tiebreakers.</p>
+<p>Similarly, to minimize a convex function <span class="arithmatex">\(f\)</span>, it suffices to find <span class="arithmatex">\(p\)</span> for which <span class="arithmatex">\(k=K\)</span> minimizes <span class="arithmatex">\(f(k)-pk\)</span>. The maximum <span class="arithmatex">\(k\)</span> that minimizes <span class="arithmatex">\(f(k)-pk\)</span> is non-decreasing as a function of <span class="arithmatex">\(p\)</span>.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">minimize</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">min_p</span><span class="p">,</span> <span class="n">max_p</span><span class="p">):</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="n">p</span><span class="p">):</span> <span class="o">...</span> <span class="c1"># Returns (f(k)-pk, k) where k is the maximum value minimizing f(k)-pk.</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">low</span> <span class="o">=</span> <span class="n">min_p</span> <span class="o">-</span> <span class="mi">1</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">high</span> <span class="o">=</span> <span class="n">max_p</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="k">while</span> <span class="n">low</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">high</span><span class="p">:</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">low</span> <span class="o">+</span> <span class="n">high</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        <span class="k">if</span> <span class="n">solve</span><span class="p">(</span><span class="n">mid</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">K</span><span class="p">:</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>            <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>            <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="k">return</span> <span class="n">solve</span><span class="p">(</span><span class="n">high</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">high</span> <span class="o">*</span> <span class="n">K</span>
+</span></code></pre></div>
+<p>Sometimes, it may be easy to compute the maximum (or minimum) <span class="arithmatex">\(f(k)-pk\)</span> but difficult to recover a particular value of <span class="arithmatex">\(k\)</span>. Let <span class="arithmatex">\(g(p)=\max\lbrace f(k)-pk\rbrace+pK\)</span>. Whereas <span class="arithmatex">\(g(p)\geq f(K)\)</span> for all <span class="arithmatex">\(p\)</span>, the slope <span class="arithmatex">\(p^\prime\)</span> of a supporting line at <span class="arithmatex">\(K\)</span> satisfies <span class="arithmatex">\(g(p^\prime)=f(K)\)</span>, so <span class="arithmatex">\(f(K)=\min g(p)\)</span>.</p>
+<p>Since <span class="arithmatex">\(g(p)\)</span> is the maximum of affine functions of <span class="arithmatex">\(p\)</span>, it is convex. Thus, <span class="arithmatex">\(\min g(p)\)</span> can be searched in logarithmic time via ternary search or golden-section search.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">maximize</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">min_p</span><span class="p">,</span> <span class="n">max_p</span><span class="p">):</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="n">p</span><span class="p">):</span> <span class="o">...</span> <span class="c1"># Returns max(f(k)-pk)+pK.</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">low</span> <span class="o">=</span> <span class="n">min_p</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">high</span> <span class="o">=</span> <span class="n">max_p</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="k">while</span> <span class="n">low</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="n">high</span><span class="p">:</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        <span class="n">mid_l</span> <span class="o">=</span> <span class="p">(</span><span class="n">low</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">high</span><span class="p">)</span> <span class="o">//</span> <span class="mi">3</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        <span class="n">mid_r</span> <span class="o">=</span> <span class="p">(</span><span class="n">low</span> <span class="o">+</span> <span class="n">high</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">//</span> <span class="mi">3</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        <span class="k">if</span> <span class="n">solve</span><span class="p">(</span><span class="n">mid_l</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">solve</span><span class="p">(</span><span class="n">mid_r</span><span class="p">):</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>            <span class="n">high</span> <span class="o">=</span> <span class="n">mid_r</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>            <span class="n">low</span> <span class="o">=</span> <span class="n">mid_l</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">solve</span><span class="p">(</span><span class="n">low</span><span class="p">),</span> <span class="n">solve</span><span class="p">(</span><span class="n">low</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">solve</span><span class="p">(</span><span class="n">high</span><span class="p">))</span>
+</span></code></pre></div>
+<h3 id="related-articles-and-problems">Related articles and problems</h3>
+<ul>
+<li><a href="https://noshi91.github.io/algorithm-encyclopedia/d-edge-shortest-path-monge">Kyopro Encyclopedia of Algorithms - Monge グラフ上の <span class="arithmatex">\(d\)</span>-辺最短路長を計算するアルゴリズム</a></li>
+<li><a href="https://info.atcoder.jp/entry/algorithm_lectures/alien_trick">AtCoder Algorithm Lecture - Alien Trick</a></li>
+<li><a href="https://atcoder.jp/contests/abc218/tasks/abc218_h">ABC 218 H - Red and Blue Lamps</a> - maximization</li>
+<li><a href="https://atcoder.jp/contests/abc305/tasks/abc305_h">ABC 305 Ex - Shojin</a> - submodular optimization; minimization with special ternary search conditions</li>
+<li><a href="https://atcoder.jp/contests/arc168/tasks/arc168_e">ARC 168 E - Subsegments with Large Sums</a> - minimization with special binary search conditions</li>
+<li><a href="https://atcoder.jp/contests/abc355/tasks/abc355_g">ABC 355 G - Baseball</a> - Monge minimization with ternary search via Larmore–Schieber DP (online algorithm for totally monotone, lower-triangular matrix); see also SMAWK algorithm</li>
+<li><a href="https://atcoder.jp/contests/abc462/tasks/abc462_f">ABC 462 F - More ABC</a> - minimization</li>
+<li><a href="https://atcoder.jp/contests/nadafes2022_day2/tasks/nadafes2022_day2_k">灘校文化祭コンテスト 2022 Day2 K - Exhibition 3</a> - maximization</li>
+<li><a href="https://atcoder.jp/contests/tupc2022/tasks/tupc2022_k">TUPC 2022 K - Lebesgue Integral</a> - Monge maximization with ternary search</li>
+<li><a href="https://atcoder.jp/contests/joisp2023/tasks/joisp2023_g">JOI 2022/2023 Spring Training G - Chorus</a> - Monge minimization; similar to ABC 355 G</li>
+<li><a href="https://atcoder.jp/contests/joi2026final/tasks/joi2026final_h">JOI 2025/2026 Final Stage H - Scarecrows 2</a> - minimization; reduction from special case of weighted bipartite matching</li>
+</ul>
+<h2 id="matroid">Matroid</h2>
+<p>A <strong>matroid</strong> <span class="arithmatex">\(M\)</span> is a pair <span class="arithmatex">\((E, \mathcal{I})\)</span> where the <strong>ground set</strong> <span class="arithmatex">\(E\)</span> is finite and its <strong>independent sets</strong> <span class="arithmatex">\(\mathcal{I}\)</span> is a subset of the power set of <span class="arithmatex">\(E\)</span>.</p>
+<p>A matroid <span class="arithmatex">\(M=(E, \mathcal{I})\)</span> satisfies the following properties:</p>
+<ul>
+<li>The empty set is independent.</li>
+<li>Every subset of an independent set is also independent.</li>
+<li>If <span class="arithmatex">\(X, Y\in\mathcal{I}\)</span> and <span class="arithmatex">\(|X|\gt|Y|\)</span>, then there exists <span class="arithmatex">\(x\in X\setminus Y\)</span> such that <span class="arithmatex">\(Y\cup\lbrace x\rbrace\in\mathcal{I}\)</span>. (This is also called the <strong>exchange property</strong>.)</li>
+</ul>
+<p>A <strong>basis</strong> of a matroid is a maximal independent set. By the above properties, all bases of a matroid have the same size. The <strong>rank</strong> of a matroid is the size of a basis.</p>
+<h3 id="examples">Examples</h3>
+<p>The <strong>free matroid</strong> of a finite set <span class="arithmatex">\(E\)</span> is <span class="arithmatex">\((E, \mathcal{P}(E))\)</span>.</p>
+<p>The <strong>uniform matroid</strong> of rank <span class="arithmatex">\(r\)</span> is a matroid where the independent sets are all subsets whose size is at most <span class="arithmatex">\(r\)</span>.</p>
+<p>A <strong>partition matroid</strong> is a direct sum of uniform matroids.</p>
+<p>Given a set <span class="arithmatex">\(E\)</span> in a vector space <span class="arithmatex">\(V\)</span>, if <span class="arithmatex">\(\mathcal{I}\)</span> is the linearly independent subsets of <span class="arithmatex">\(E\)</span>, then <span class="arithmatex">\((E, \mathcal{I})\)</span> is a <strong>vector matroid</strong>. The <strong>column matroid</strong> of a matrix is defined similarly such that its independent sets are the linearly indpendent columns of the matrix. A basis of the column matroid corresponds to a basis of the matrix.</p>
+<p>Given a finite graph <span class="arithmatex">\(G=(V, E)\)</span>, the <strong>cycle matroid</strong> or <strong>graphic matroid</strong> <span class="arithmatex">\(M(G)=(E, \mathcal{I})\)</span> is defined such that <span class="arithmatex">\(I\)</span> is the family of all edge sets that form a forest. Thus, a basis of a cycle matroid is a maximal forest containing a spanning tree of each connected component of <span class="arithmatex">\(G\)</span>.</p>
+<h3 id="matroid-intersection">Matroid intersection</h3>
+<p>The matroid intersection problem asks for the largest common independent set of two matroids over the same ground set. That is, to find <span class="arithmatex">\(X\in\mathcal{I}_1\cap\mathcal{I}_2\)</span> that maximizes <span class="arithmatex">\(|X|\)</span> given matroids <span class="arithmatex">\((E, \mathcal{I}_1)\)</span> and <span class="arithmatex">\((E, \mathcal{I}_2)\)</span>.</p>
+<p>A known algorithm solves the matroid intersection problem in <span class="arithmatex">\(\mathcal{O}(|E|^2r)\)</span> time where <span class="arithmatex">\(r\)</span> is the size of the maximum independent set.</p>
+<p>The matroid intersection problem is a generalization of many graph problems, including maximum matchings in bipartite graphs.</p>
+<p>Consider a bipartite graph <span class="arithmatex">\(G=(U\cup V, E)\)</span>. Since every vertex <span class="arithmatex">\(u\in U\)</span> is matched with at most one edge, the constraint can be expressed as a partition matroid. Similarly, the constraint on <span class="arithmatex">\(V\)</span> can also be expressed as a matroid. Thus, the maximum matching is their maximum common independent set.</p>
+<ul>
+<li><a href="https://hitonanode.github.io/cplib-cpp/combinatorial_opt/matroid_intersection.hpp.html">Implementation by hitonanode</a></li>
+</ul>
+<h3 id="linear-matroid-intersection">Linear matroid intersection</h3>
+<p>Let <span class="arithmatex">\(A_1, A_2\)</span> be two matrices with the same number of columns. The linear matroid intersection problem concerns their column matroids <span class="arithmatex">\(M_1, M_2\)</span>.</p>
+<p>Let <span class="arithmatex">\(E\)</span> be the column set and define indeterminates <span class="arithmatex">\(x_1, \dots, x_{|E|}\)</span>. Let <span class="arithmatex">\(D\)</span> be the <span class="arithmatex">\(|E|\times|E|\)</span> polynomial matrix whose diagonal entries are <span class="arithmatex">\(x_e\)</span>. The size of a maximum independent set is equivalent to <span class="arithmatex">\(\text{rank}(A_1DA_2^T)\)</span>.</p>
+<p>A randomized algorithm can compute the rank in <span class="arithmatex">\(\mathcal{O}(nm^2)\)</span> time where <span class="arithmatex">\(n,m\)</span> are the numbers of rows of <span class="arithmatex">\(A_1\)</span> and <span class="arithmatex">\(A_2\)</span>.</p>
+<p>Consider again the maximum matchings on a bipartite graph <span class="arithmatex">\(G=(U\cup V, E)\)</span>. The Edmonds matrix <span class="arithmatex">\(A\)</span> of <span class="arithmatex">\(G\)</span> is defined by <span class="arithmatex">\(A_{uv}=x_{uv}\)</span> if <span class="arithmatex">\((u,v)\in E\)</span>, otherwise <span class="arithmatex">\(A_{uv}=0\)</span>. We show that the size of a maximum matching is equal to <span class="arithmatex">\(\text{rank }A\)</span>.</p>
+<p>The previous section defines partition matroids with respect to <span class="arithmatex">\(U\)</span> and <span class="arithmatex">\(V\)</span>, and these matroids can in turn be described using column matroids. Let <span class="arithmatex">\(e_i\)</span> be a column whose <span class="arithmatex">\(i\)</span>-th entry is <span class="arithmatex">\(1\)</span> and other entries are <span class="arithmatex">\(0\)</span>. Let <span class="arithmatex">\(A_1\)</span> be a <span class="arithmatex">\(|E|\)</span>-column matrix whose <span class="arithmatex">\(i\)</span>-th column is <span class="arithmatex">\(e_u\)</span> where <span class="arithmatex">\((u, v)\)</span> is the <span class="arithmatex">\(i\)</span>-th edge, and similarly define <span class="arithmatex">\(A_2\)</span> in terms of <span class="arithmatex">\(e_v\)</span>. Their corresponding polynomial matrix <span class="arithmatex">\(A_1DA_2^T\)</span> is equal to</p>
+<div class="arithmatex">\[\sum_{(u, v)\in E}e_ue_v^Tx_{uv},\]</div>
+<p>which is identical to the Edmonds matrix.</p>
+<h4 id="related-problems">Related problems</h4>
+<ul>
+<li><a href="https://atcoder.jp/contests/abc399/tasks/abc399_g">ABC 399 G - Colorful Spanning Tree</a></li>
+</ul>
+<h3 id="greedy-algorithm-for-matroids">Greedy algorithm for matroids</h3>
+<p>Consider the problem of maximizing the weight of an independent set where each element <span class="arithmatex">\(x\in E\)</span> has a nonnegative weight <span class="arithmatex">\(w(x)\)</span>. The corresponding greedy algorithm is as follows:</p>
+<ol>
+<li>Let <span class="arithmatex">\(S\)</span> be an empty set.</li>
+<li>For each <span class="arithmatex">\(x\in E\)</span> in descending order of <span class="arithmatex">\(w(x)\)</span>, if <span class="arithmatex">\(S\cup\lbrace x\rbrace\in\mathcal{I}\)</span>, add <span class="arithmatex">\(x\)</span> to <span class="arithmatex">\(S\)</span>.</li>
+<li>Output <span class="arithmatex">\(S\)</span>.</li>
+</ol>
+<p>This algorithm is a generalization of Kruskal's algorithm. In particular, this algorithm always finds a basis.</p>
+<p>If weights are allowed to be negative and the problem does not require the independent set to have full rank, the algorithm can be modified to ignore elements with negative weights.</p>
+<h4 id="related-problems_1">Related problems</h4>
+<ul>
+<li><a href="https://atcoder.jp/contests/abc137/tasks/abc137_d">ABC 137 D - Summer Vacation</a></li>
+<li><a href="https://atcoder.jp/contests/jsc2019-qual/tasks/jsc2019_qual_e">JSC 2019 Qualification E - Card Collector</a></li>
+<li><a href="https://atcoder.jp/contests/abc363/tasks/abc363_g">ABC 363 G - Dynamic Scheduling</a></li>
+</ul>
+<h3 id="aliens-method-for-matroids">Aliens method for matroids</h3>
+<blockquote>
+<p>There is a connected, weighted simple graph <span class="arithmatex">\(G=(V, E)\)</span>. Furthermore, each edge <span class="arithmatex">\(e\in E\)</span> is colored either black or white. Find the minimum weight of a spanning tree that contains exactly <span class="arithmatex">\(K\)</span> black edges.</p>
+</blockquote>
+<p>The above problem can be solved by iterating Kruskal's algorithm with respect to some constant <span class="arithmatex">\(p\)</span>. In this case, the weight of a black edge <span class="arithmatex">\(e\)</span> is <span class="arithmatex">\(w(e)-p\)</span>, whereas the weight of a white edge <span class="arithmatex">\(e^\prime\)</span> remains <span class="arithmatex">\(w(e^\prime)\)</span>. The time complexity is <span class="arithmatex">\(\mathcal{O}(|E|\log|E|)\)</span>.</p>
+<p>This approach can be generalized other matroids when minimizing the cost of a basis containing <span class="arithmatex">\(K\)</span> elements of a certain category.</p>
+<h3 id="halls-marriage-theorem-and-transversal-matroids">Hall's marriage theorem and transversal matroids</h3>
+<p>Consider a bipartite graph <span class="arithmatex">\(G=(U\cup V, E)\)</span> where <span class="arithmatex">\(|U|=|V|\)</span>. The following discussion holds for <span class="arithmatex">\(|U|\neq|V|\)</span> by replacing <em>perfect matching</em> with <span class="arithmatex">\(X\)</span>-perfect matching where <span class="arithmatex">\(X=\min\lbrace|U|, |V|\rbrace\)</span>.</p>
+<p>Hall's marriage theorem states that a perfect matching exists if and only if the following is true for all <span class="arithmatex">\(S\subseteq U\)</span>.</p>
+<ul>
+<li><span class="arithmatex">\(|S|\leq|T|\)</span>, where <span class="arithmatex">\(T\)</span> denotes the neighborhood of <span class="arithmatex">\(S\)</span>.</li>
+</ul>
+<p>The following greedy algorithm recovers a perfect matching in <span class="arithmatex">\(\mathcal{O}(f(G)|E|)\)</span> time, where <span class="arithmatex">\(f(G)\)</span> is the computational cost of determining whether a particular subgraph of <span class="arithmatex">\(G\)</span> has perfect matching.</p>
+<ol>
+<li>Let <span class="arithmatex">\(C\)</span> be an empty set.</li>
+<li>For every edge <span class="arithmatex">\((u, v)\)</span>, if removing vertices <span class="arithmatex">\(u, v\)</span> results in a bipartite graph with perfect matching, add <span class="arithmatex">\((u, v)\)</span> to <span class="arithmatex">\(C\)</span> and remove vertices <span class="arithmatex">\(u, v\)</span>.</li>
+<li>Output <span class="arithmatex">\(C\)</span>.</li>
+</ol>
+<p>This algorithm is correct under the invariant that the remaining subgraph has a perfect matching after each iteration.</p>
+<p>A related matroid is the <strong>transversal matroid</strong>, whose ground set is <span class="arithmatex">\(U\)</span> and independent sets <span class="arithmatex">\(\mathcal{I}\)</span> are subsets of <span class="arithmatex">\(U\)</span> whose vertices can all be matched to distinct vertices in <span class="arithmatex">\(V\)</span>. A perfect matching exists if and only if its rank is <span class="arithmatex">\(|U|\)</span>.</p>
+<p>Note that a transversal matroid is different from a graphic matroid or a <strong>bipartite matroid</strong>, whose ground set contains edges.</p>
+<p>Below is an outline of the proof that transversal matroids satisfy the exchange property.</p>
+<ul>
+<li>Consider <span class="arithmatex">\(X, Y\in\mathcal{I}\)</span> where <span class="arithmatex">\(|X|\gt|Y|\)</span>. Let <span class="arithmatex">\(A, B\)</span> be matchings that saturate <span class="arithmatex">\(X, Y\)</span>, respectively.</li>
+<li>The symmetric difference of <span class="arithmatex">\(A, B\)</span> is a subgraph of <span class="arithmatex">\(G\)</span> in which connected components are either</li>
+<li>an isolated vertex;</li>
+<li>a path alternating between <span class="arithmatex">\(A\)</span>-edges and <span class="arithmatex">\(B\)</span>-edges; or</li>
+<li>an even-length cycle alternating between <span class="arithmatex">\(A\)</span>-edges and <span class="arithmatex">\(B\)</span>-edges.</li>
+<li>Since <span class="arithmatex">\(|A|=|X|\gt|Y|=|B|\)</span>, the subgraph must contain more <span class="arithmatex">\(A\)</span>-edges than <span class="arithmatex">\(B\)</span>-edges. In particular, there exists a path <span class="arithmatex">\(P\)</span> whose edges originate from <span class="arithmatex">\(A, B, A, \dots, A\)</span>.</li>
+<li>Let <span class="arithmatex">\(P_A, P_B\)</span> be the set of <span class="arithmatex">\(A\)</span>-edges and <span class="arithmatex">\(B\)</span>-edges in <span class="arithmatex">\(P\)</span>, respectively. Then <span class="arithmatex">\((B\cup P_A)\setminus P_B\)</span> is a matching that saturates <span class="arithmatex">\(Y\cup\lbrace x\rbrace\)</span> where <span class="arithmatex">\(x\in X\setminus Y\)</span> is an endpoint of <span class="arithmatex">\(P\)</span>.</li>
+</ul>
+<h4 id="related-problems_2">Related problems</h4>
+<ul>
+<li><a href="https://atcoder.jp/contests/arc076/tasks/arc076_d">ARC 076 F - Exhausted?</a></li>
+<li><a href="https://atcoder.jp/contests/arc106/tasks/arc106_e">ARC 106 E - Medals</a></li>
+<li><a href="https://atcoder.jp/contests/ajo2024-final/tasks/ajo2024_final_b">AJO 2024 Final B - Meetings</a></li>
+<li><a href="https://atcoder.jp/contests/abc437/tasks/abc437_g">ABC 437 G - Colorful Christmas Tree</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Maintained by <a href="https://github.com/amiast"><u>amiast</u></a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["toc.follow", "toc.integrate", "navigation.top", "navigation.tabs", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/open_external_links.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
