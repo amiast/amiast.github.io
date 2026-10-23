@@ -12,9 +12,9 @@ html {
     top: -2px;
 }
 
-.md-search__input {
-    position: relative;
-    top: -2px;
+.md-search__button::after {
+    top: 4px;
+    background-color: transparent;
 }
 
 .md-tabs__item {
