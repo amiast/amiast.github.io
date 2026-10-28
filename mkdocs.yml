@@ -6,8 +6,11 @@ nav:
   - Editorials: editorials.md
   - Miscellaneous:
     - Overview: misc/index.md
+    - Convolution: misc/convolution.md
     - Convex optimization: misc/convex_optimization.md
     - Discrete logarithm: misc/discrete_log.md
+    - Möbius inversion formula: misc/moebius_inversion.md
+    - Subset transform: misc/subset_transform.md
 
 theme:
   name: material
@@ -75,4 +78,6 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - pymdownx.details
+  - admonition
   - md_in_html
