@@ -1,26 +1,33 @@
+
+/* Scrollbar space */
 html {
     scrollbar-gutter: stable;
 }
 
+/* Text highlight */
 ::selection {
     background-color: var(--md-primary-fg-color);
     color: white;
 }
 
+/* Navigation (title, sidebar) */
 .md-ellipsis {
     position: relative;
     top: -2px;
 }
 
+/* Zensical search button */
 .md-search__button::after {
     top: 4px;
     background-color: transparent;
 }
 
+/* Top navigation tabs */
 .md-tabs__item {
     height: 2rem;
 }
 
+/* Tab links */
 .md-tabs__link {
     display: flex;
     align-items: center;
@@ -29,22 +36,32 @@ html {
     padding: 0 0.8em;
 }
 
+/* Sidebar */
 .md-nav__link {
     line-height: 1.5;
 }
 
+/* Main content */
 .md-content {
     padding-bottom: 2rem;
 }
 
-.md-typeset p {
+/* Markdown paragraphs */
+.md-typeset p:not(.admonition p) {
     line-height: 2.1;
 }
 
+/* Markdown tables */
 .md-typeset table:not([class]) {
     font-size: inherit;
 }
 
+/* Snippets */
 .md-typeset pre code {
     letter-spacing: 0.05em;
+}
+
+/* Admonitions */
+.md-typeset .admonition, .md-typeset details {
+    font-size: inherit;
 }
